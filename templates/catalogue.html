@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% from 'macros.html' import card,icon with context %}{% block title %}Catalogue{% endblock %}
+{% block main %}<div class="page-heading"><h1>Book catalogue</h1></div>
+<form class="filter-bar" method="get"><label class="search-field">Search books<span class="input-icon">{{icon('search')}}<input name="q" type="search" value="{{q}}" maxlength="200" placeholder="Title, author or keyword"></span></label>
+<label>Subject<select name="category"><option value="">All subjects</option>{% for c in categories %}<option {{ 'selected' if c.category==category }}>{{c.category}}</option>{% endfor %}</select></label>
+<label>Sort by<select name="sort">{% for key,label in [('shelf','Shelf order'),('title','Title A–Z'),('author','Author A–Z')] %}<option value="{{key}}" {{'selected' if order==key}}>{{label}}</option>{% endfor %}</select></label>
+<label class="check-field"><input name="available" type="checkbox" value="1" {{'checked' if available}}> Available only</label><button class="btn btn-primary">Apply filters</button></form>
+<div class="results-head"><strong>{{count}} {{'title' if count==1 else 'titles'}}{% if q %} matching “{{q}}”{% endif %}</strong>{% if q or category or available or order!='shelf' %}<a href="{{url_for('catalogue')}}">Clear filters</a>{% endif %}</div>
+<div class="catalogue-grid">{% for b in books %}{{card(b)}}{% else %}<div class="empty"><h2>No matching titles</h2><p>Try another author, keyword or subject.</p></div>{% endfor %}</div>
+{% if pages>1 %}<nav class="pagination-row">{% if page>1 %}<a href="{{url_for('catalogue',page=page-1,q=q,category=category,sort=order,available=1 if available else 0)}}">Previous</a>{% endif %} Page {{page}} of {{pages}} {% if page<pages %}<a href="{{url_for('catalogue',page=page+1,q=q,category=category,sort=order,available=1 if available else 0)}}">Next</a>{% endif %}</nav>{% endif %}{% endblock %}

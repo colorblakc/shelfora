@@ -1,0 +1,9 @@
+{% macro icon(name) -%}
+<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><use href="{{ url_for('static',filename='icons.svg') }}#{{ name }}"/></svg>
+{%- endmacro %}
+{% macro token() %}<input type="hidden" name="_token" value="{{ csrf() }}">{% endmacro %}
+{% macro jacket(b) %}{% if b.seed_key in ['gatsby', 'pride', 'time', 'room', 'garden', 'frankenstein', 'souls', 'origin'] %}<img class="jacket" src="{{ url_for('static', filename='images/' ~ b.seed_key ~ '.webp') }}" alt="" loading="lazy" width="400" height="600">{% elif b.seed_key in cover_keys %}<img class="jacket" src="{{ url_for('static', filename='images/' ~ b.seed_key ~ '.jpg') }}" alt="" loading="lazy" width="400" height="600">{% else %}<span class="type-jacket">{{ icon('book') }}<strong>{{ b.title }}</strong><small>{{ b.author }}</small></span>{% endif %}{% endmacro %}
+{% macro card(b) %}<article class="book-card" data-category="{{ b.category }}">
+<a class="book-link" href="{{ url_for('book',book_id=b.id) }}"><div class="jacket-stage tone-{{ b.seed_key or 'default' }}">{{ jacket(b) }}</div><div class="card-meta"><span>{{ b.category }}</span><span class="availability {{ 'unavailable' if b.available<1 }}">{{ 'Available' if b.available>0 else 'Unavailable' }}</span></div><h3>{{ b.title }}</h3><p>{{ b.author }}</p></a></article>{% endmacro %}
+{% macro search(q='',hero=false) %}<form class="search-box {{ 'hero-search' if hero }}" method="get" action="{{ url_for('catalogue') }}" role="search">{{ icon('search') }}<input type="search" name="q" aria-label="Search catalogue" placeholder="Title, author or keyword" value="{{ q }}" maxlength="200"><button type="submit">Search</button></form>{% endmacro %}
+{% macro status(value) %}<span class="state st-{{ value }}">{{ value|capitalize }}</span>{% endmacro %}

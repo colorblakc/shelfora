@@ -1,0 +1,382 @@
+/* Keep library tasks readable as the workspace narrows. */
+.workspace,
+.panel,
+.form-stack,
+.form-stack label,
+.filter-bar label,
+.inline-form label,
+.book-detail > section,
+.room-layout > * {
+  min-width: 0;
+}
+
+.form-stack input,
+.form-stack select,
+.form-stack textarea {
+  width: 100%;
+}
+
+.filter-bar .check-field input[type="checkbox"] {
+  width: 16px;
+  flex: 0 0 16px;
+}
+
+.results-head {
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.results-head strong,
+.book-detail h1,
+.activity-row strong,
+.activity-row small {
+  overflow-wrap: anywhere;
+}
+
+.results-head > a {
+  flex-shrink: 0;
+}
+
+.table-responsive {
+  max-width: 100%;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #c4c4e6 transparent;
+}
+
+.action-group,
+.action-group form {
+  flex-wrap: wrap;
+}
+
+.seat > span {
+  min-height: 44px;
+}
+
+.booking-summary .btn,
+.booking-summary .outline-link {
+  min-height: 44px;
+}
+
+.pagination-row {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pagination-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 8px;
+}
+
+@media (max-width: 850px) {
+  .main-nav a {
+    flex: 0 0 auto;
+    min-height: 44px;
+  }
+
+  .main-nav {
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #c4c4e6 transparent;
+  }
+
+  .profile-link {
+    max-width: min(210px, 35vw);
+  }
+}
+
+@media (max-width: 620px) {
+  .main-nav a {
+    flex: 0 0 auto;
+    padding-inline: 12px;
+  }
+
+  .filter-bar .btn,
+  .inline-form .outline-link,
+  .form-stack .btn,
+  .activity-row .plain-btn,
+  .desk-tabs a,
+  .table .small-btn,
+  .table .plain-btn {
+    min-height: 44px;
+  }
+
+  .desk-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .desk-tabs a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .inline-form {
+    align-items: stretch;
+  }
+
+  .inline-form label {
+    flex: 1 1 180px;
+  }
+
+  .activity-row > form,
+  .activity-row > a {
+    margin-left: auto;
+  }
+
+  .activity-row > span {
+    overflow-wrap: anywhere;
+  }
+
+  .account-content .form-stack input {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header > .brand {
+    padding-left: 12px;
+    font-size: 1.3rem;
+    gap: 6px;
+  }
+
+  .topbar {
+    padding-inline: 10px;
+  }
+
+  .account-nav {
+    gap: 10px;
+  }
+
+  .profile-link {
+    max-width: 135px;
+    font-size: .85rem;
+  }
+
+  .site-header .initial {
+    width: 28px;
+    height: 28px;
+  }
+
+  .account-nav .btn {
+    padding-inline: 11px;
+    font-size: .85rem;
+  }
+
+  .filter-bar label {
+    flex-basis: 100%;
+  }
+
+  .filter-bar .check-field {
+    flex-basis: 100%;
+    min-height: 36px;
+  }
+
+  .table-map {
+    gap: 12px;
+  }
+
+  .study-table {
+    padding: 6px;
+  }
+
+  .map-legend {
+    gap: 8px 12px;
+  }
+}
+
+/* Bound each header and panel region independently of its content length. */
+.site-header .brand img,
+.site-footer .brand img {
+  flex-shrink: 0;
+}
+
+.context-name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.context-name b {
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.topbar > .account-nav {
+  min-width: 0;
+  max-width: 45%;
+}
+
+.account-nav .profile-link {
+  min-width: 0;
+}
+
+.section-head {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.section-head > h2 {
+  min-width: 0;
+  flex: 1 1 180px;
+}
+
+.section-head > a,
+.section-head > .state {
+  flex: 0 0 auto;
+}
+
+.activity-row > div {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.activity-row > span,
+.activity-row > .state,
+.activity-row > form {
+  flex-shrink: 0;
+}
+
+.activity-row > span:not(.state) {
+  max-width: 100%;
+}
+
+.stat-grid > a,
+.circulation-week > *,
+.form-panel,
+.book-detail > *,
+.table-responsive > .table {
+  min-width: 0;
+}
+
+.table td > strong {
+  display: block;
+}
+
+@media (min-width: 851px) {
+  .sidebar {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+
+  .sidebar-bottom {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 850px) {
+  .topbar > .account-nav {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .activity-row > div {
+    flex-basis: 100%;
+  }
+
+  .section-head > h2 {
+    flex-basis: 160px;
+  }
+
+  .table td,
+  .table th {
+    padding-block: 12px;
+  }
+
+  .filter-bar,
+  .inline-form,
+  .form-stack {
+    max-width: 100%;
+  }
+}
+
+.account-menu { position:relative; }
+.account-menu summary { cursor:pointer; list-style:none; }
+.account-menu summary::-webkit-details-marker { display:none; }
+.account-menu-links { position:absolute; z-index:12; right:0; top:calc(100% + 12px); min-width:190px; background:white; border:1px solid var(--line); border-radius:12px; padding:7px; box-shadow:0 8px 24px #19175a1c; }
+.account-menu-links a,.account-menu-links button { display:block; width:100%; text-align:left; text-decoration:none; padding:9px 11px; border:0; background:transparent; color:var(--ink); border-radius:7px; font-size:.9rem; }
+.account-menu-links a:hover,.account-menu-links button:hover { background:var(--soft); }
+.profile-layout { display:grid; grid-template-columns:200px minmax(0,540px); gap:32px; align-items:start; margin-bottom:60px; }
+.profile-tabs { display:flex; flex-direction:column; gap:4px; }
+.profile-tabs a { padding:10px 12px; text-decoration:none; color:var(--muted); border-radius:8px; }
+.profile-tabs a[aria-current=page] { background:var(--soft); color:var(--blue); font-weight:600; }
+.profile-content { min-width:0; padding:24px; background:var(--pale); border-radius:12px; }
+.profile-content .avatar-picker { border:0; padding:0; margin:0!important; }
+.profile-content h2 { font-size:1.3rem; }
+@media(max-width:620px) { .profile-layout { grid-template-columns:1fr; gap:16px; }.profile-tabs { flex-direction:row; overflow:auto; white-space:nowrap; }.profile-tabs a { flex:none; }.profile-content { padding:20px; }.account-menu-links { position:absolute; } }
+
+/* Account names stay within the trigger after the menu chevron is added. */
+.account-menu {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.account-menu .profile-link {
+  width: 100%;
+}
+
+.account-menu .profile-link > :nth-child(2) {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-menu .profile-link > :last-child {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.account-menu-links {
+  width: 220px;
+  min-width: 0;
+  max-width: calc(100vw - 32px);
+}
+
+.account-menu-links a,
+.account-menu-links button,
+.profile-tabs a {
+  min-height: 44px;
+}
+
+.profile-tabs,
+.profile-content,
+.profile-content .form-stack {
+  min-width: 0;
+}
+
+.profile-tabs {
+  scrollbar-width: thin;
+}
+
+@media (min-width: 621px) and (max-width: 1000px) {
+  .profile-layout {
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 380px) {
+  .account-menu .profile-link {
+    gap: 6px;
+  }
+}
+
+.profile-content .avatar-choices {
+  grid-template-columns: repeat(auto-fit, 56px);
+  max-width: 328px;
+  width: 100%;
+}
+/* Account menu stays compact and anchored to the profile control. */
+.account-menu-links { top:calc(100% + 8px); width:190px; padding:5px; border-radius:10px; }
+.account-menu-links a,.account-menu-links button { min-height:38px; padding:7px 10px; line-height:1.4; }
+.account-menu-links form { margin:0; }
+.field-note { color:var(--muted); font-size:.8rem; font-weight:400; }
+@media(max-width:620px) { .profile-content .paired { grid-template-columns:1fr; } }

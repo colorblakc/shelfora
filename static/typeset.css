@@ -1,0 +1,189 @@
+/* Archivo's compact forms need a little room in everyday library tasks. */
+:root {
+  --type-body: 1rem;
+  --type-label: .9375rem;
+  --type-meta: .875rem;
+  --type-data: .9375rem;
+}
+
+body {
+  font-kerning: normal;
+  font-optical-sizing: auto;
+}
+
+.page-heading h1,
+.book-detail h1,
+.account-content h1,
+.form-panel h1 {
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -.03em;
+  overflow-wrap: anywhere;
+}
+
+.page-heading h1 { font-size: 2.5rem; }
+
+.page-heading p,
+.synopsis,
+.account-content > p,
+.panel > p,
+.booking-summary p,
+.availability-panel p {
+  font-size: var(--type-body);
+  line-height: 1.65;
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+.byline {
+  font-size: var(--type-body);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.form-stack label,
+.filter-bar label,
+.inline-form label {
+  font-size: var(--type-label);
+  font-weight: 580;
+  line-height: 1.4;
+}
+
+.form-stack input,
+.form-stack select,
+.form-stack textarea,
+.filter-bar input,
+.filter-bar select,
+.inline-form input {
+  font-size: var(--type-body);
+  font-weight: 420;
+  line-height: 1.5;
+}
+
+.form-stack small,
+.form-foot,
+.breadcrumb-link,
+.results-head,
+.pagination-row {
+  font-size: var(--type-label);
+  line-height: 1.5;
+}
+
+.book-card h3 {
+  font-size: 1.125rem;
+  font-weight: 620;
+  line-height: 1.35;
+  letter-spacing: -.018em;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+.book-card p {
+  font-size: var(--type-label);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.card-meta {
+  font-size: var(--type-meta);
+  line-height: 1.4;
+}
+
+.availability,
+.state {
+  font-size: var(--type-meta);
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.type-jacket {
+  line-height: 1.3;
+  letter-spacing: -.015em;
+}
+
+.type-jacket small { line-height: 1.4; }
+
+.table {
+  font-size: var(--type-data);
+  line-height: 1.5;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.table th {
+  font-size: var(--type-meta);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.table strong,
+.activity-row strong {
+  font-weight: 610;
+  line-height: 1.45;
+}
+
+.table small,
+.activity-row small {
+  font-size: var(--type-meta);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.table td,
+.activity-row > div,
+.booking-summary h2,
+.booking-summary h3 {
+  overflow-wrap: anywhere;
+}
+
+.stat-grid strong {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 650;
+  letter-spacing: -.035em;
+}
+
+.stat-grid span,
+.chart-key,
+.chart-day small,
+.map-legend,
+.study-table legend {
+  font-size: var(--type-meta);
+  line-height: 1.4;
+}
+
+.seat > span {
+  font-size: var(--type-label);
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.notice {
+  font-size: var(--type-label);
+  line-height: 1.55;
+}
+
+@media (max-width: 620px) {
+  .page-heading h1 { font-size: 2rem; }
+  .account-content h1,
+  .form-panel h1 { font-size: 1.875rem; }
+
+  .book-card h3 { font-size: 1.0625rem; }
+  .book-card p { font-size: var(--type-meta); }
+
+  .table { font-size: var(--type-data); }
+  .table small,
+  .activity-row small { font-size: var(--type-meta); }
+}
+
+/* Long catalogue and membership content may wrap inside its own column. */
+.table td,
+.stat-grid span,
+.notice,
+.form-stack label,
+.book-detail .byline,
+.booking-summary p {
+  overflow-wrap: anywhere;
+}
+
+.activity-row > span:not(.state) {
+  font-variant-numeric: lining-nums tabular-nums;
+}

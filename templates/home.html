@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% from 'macros.html' import card,icon,search with context %}
+{% block main %}
+<section class="hero"><div class="hero-art" aria-hidden="true"></div><div class="hero-copy">
+<h1>Find your next <em>chapter.</em></h1><p>Browse the shelves, reserve a book, and settle into a reading seat.</p>{{ search(hero=true) }}</div></section>
+<section class="shelf-section" aria-labelledby="shelves"><div class="section-head"><div><h2 id="shelves">On the shelves</h2></div><a class="outline-link" href="{{url_for('catalogue')}}">{{ icon('grid') }} View catalogue</a></div>
+<div class="shelf-tools"><div class="pills" aria-label="Filter the shelf"><button type="button" class="chip active" data-filter="" aria-pressed="true">All books</button>{% for cat in books|map(attribute='category')|unique %}<button type="button" class="chip" data-filter="{{ cat }}" aria-pressed="false">{{ cat }}</button>{% endfor %}</div><div class="shelf-controls"><button aria-label="Previous books" data-scroll="-1">{{icon('left')}}</button><button aria-label="Next books" data-scroll="1">{{icon('right')}}</button></div></div>
+<div class="book-rail" id="book-rail">{% for b in books %}{{card(b)}}{% else %}<p>The catalogue is ready for its first book.</p>{% endfor %}</div></section>
+<section class="reading-callout"><div class="callout-icon">{{ icon('seats') }}</div><div><h2>A seat in the reading room</h2><p>Choose a table and book a morning or afternoon session.</p></div><a class="outline-link" href="{{url_for('room.overview')}}">Find a seat</a></section>
+{% endblock %}

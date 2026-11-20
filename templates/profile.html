@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% from 'macros.html' import token with context %}{% block title %}Your profile{% endblock %}
+{% block main %}
+<div class="page-heading"><h1>Your profile</h1><p>Manage your membership details and account settings.</p></div>
+<div class="profile-layout">
+<nav class="profile-tabs" aria-label="Profile settings"><a href="{{url_for('profile')}}" {% if section=='details' %}aria-current="page"{% endif %}>Personal details</a><a href="{{url_for('profile',section='picture')}}" {% if section=='picture' %}aria-current="page"{% endif %}>Profile picture</a><a href="{{url_for('profile',section='security')}}" {% if section=='security' %}aria-current="page"{% endif %}>Password</a></nav>
+<section class="profile-content">
+{% if section=='details' %}<h2>Personal details</h2><form method="post" action="{{url_for('profile')}}" class="form-stack">{{token()}}
+<label>Full name<input name="name" autocomplete="name" maxlength="100" value="{{request.form.get('name',g.user.name)}}" required></label>
+<label>Email address<input type="email" name="email" autocomplete="email" maxlength="254" value="{{request.form.get('email',g.user.email)}}" required></label>
+{% include 'contact_fields.html' %}<button class="btn btn-primary">Save changes</button></form>
+{% elif section=='picture' %}{% include 'avatar_picker.html' %}
+{% else %}<h2>Change password</h2><form method="post" action="{{url_for('change_password')}}" class="form-stack">{{token()}}<label>Current password<input type="password" name="current_password" autocomplete="current-password" maxlength="128" required></label><label>New password<input type="password" name="password" autocomplete="new-password" minlength="10" maxlength="128" required></label><label>Confirm new password<input type="password" name="confirm_password" autocomplete="new-password" minlength="10" maxlength="128" required></label><button class="btn btn-primary">Change password</button></form>{% endif %}
+</section></div>
+{% endblock %}

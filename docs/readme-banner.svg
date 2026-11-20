@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Shelfora — your library, all in one place</title>
+  <desc id="desc">A cobalt library card with a row of books and a red bookmark.</desc>
+  <rect width="1200" height="360" rx="24" fill="#312dbb"/>
+  <path d="M0 278H1200V360H0Z" fill="#2925a7"/>
+  <circle cx="1062" cy="-74" r="295" fill="#3c38cc"/>
+  <path d="M914 25h199v235H914z" fill="#27239e" opacity=".45"/>
+  <rect x="64" y="64" width="48" height="48" rx="14" fill="#f7f7ff"/>
+  <path d="M76 80c7-3 12-2 12 1v16c-4-3-8-3-12-1V80Zm24 0c-7-3-12-2-12 1v16c4-3 8-3 12-1V80Z" fill="none" stroke="#312dbb" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="128" y="96" fill="#f7f7ff" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="-.5">shelfora</text>
+  <text x="64" y="184" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-2">A better place</text>
+  <text x="64" y="247" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-2">for every book.</text>
+  <text x="66" y="319" fill="#e2e4ff" font-family="Arial, sans-serif" font-size="20">Your library, all in one place.</text>
+  <g transform="translate(775 69)">
+    <rect x="0" y="0" width="58" height="191" rx="5" fill="#edeefa" transform="rotate(-7 29 191)"/>
+    <path d="M44 22h54a7 7 0 0 1 7 7v162H44z" fill="#b9c2f4"/>
+    <path d="M111 5h75a7 7 0 0 1 7 7v179h-82z" fill="#f8f8ff"/>
+    <path d="M129 5h16v67l-8-8-8 8z" fill="#ed5b60"/>
+    <path d="M207 35h61a7 7 0 0 1 7 7v149h-68z" fill="#d6daf8"/>
+    <path d="M278 17h49a7 7 0 0 1 7 7v167h-56z" fill="#fcfcff"/>
+    <path d="M125 113h49M125 126h39M222 91h38M222 103h27M290 92h30" fill="none" stroke="#a9b4ea" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-18 198h370" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <circle cx="1154" cy="318" r="7" fill="#ed5b60"/>
+</svg>

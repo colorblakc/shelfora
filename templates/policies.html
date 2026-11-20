@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% set titles={'terms':'Terms of use','borrowing':'Borrowing & fines','privacy':'Privacy'} %}
+{% block title %}{{titles[section]}}{% endblock %}
+{% block main %}
+<div class="policy-layout">
+  <nav class="policy-nav" aria-label="Library information"><strong>Library information</strong><a href="{{url_for('terms')}}" {% if section=='terms' %}aria-current="page"{% endif %}>Terms of use</a><a href="{{url_for('borrowing')}}" {% if section=='borrowing' %}aria-current="page"{% endif %}>Borrowing &amp; fines</a><a href="{{url_for('privacy')}}" {% if section=='privacy' %}aria-current="page"{% endif %}>Privacy</a><a href="{{url_for('about')}}">About Shelfora</a></nav>
+  <article class="policy-content">
+  {% if section=='terms' %}
+    <h1>Terms of use</h1><p class="policy-lead">These terms explain how to use your Shelfora membership and library services.</p>
+    <h2>Your account</h2><p>Provide accurate membership details and keep your password private. You can update your name and email in your profile. Contact a librarian if your account details or access need attention.</p>
+    <h2>Using library services</h2><p>Use the catalogue and reading-room booking system for their intended purpose. Treat library books, spaces and other members with care. A librarian manages library records and processes book issues and returns.</p>
+    <h2>Reservations and loans</h2><p>A request remains pending until a librarian reviews it. An approved reservation holds a copy for three days for collection. If the collection window expires, the next person on the waitlist may be offered the copy. A librarian records the issue and due dates when the book is issued. You can see your reservations and loans on My shelf.</p>
+    <h2>Availability and information</h2><p>Catalogue availability changes as copies are approved, issued and returned. Ask a librarian if information on a record needs correction.</p>
+    <h2>Reading-room seats</h2><p>Book an available seat for a date and session in the reading room. Release your booking if your plans change so another member can use it.</p>
+    <p>See <a href="{{url_for('borrowing')}}">Borrowing &amp; fines</a> for due dates and overdue charges, and <a href="{{url_for('privacy')}}">Privacy</a> for how account information is used.</p>
+  {% elif section=='borrowing' %}
+    <h1>Borrowing &amp; fines</h1><p class="policy-lead">Find a title, request a copy and keep track of its due date from your shelf.</p>
+    <h2>Requesting a book</h2><p>Sign in, open a book in the catalogue and select Reserve this book. A pending request does not hold a copy. Once a librarian approves it, one copy is held for you. You can cancel a pending, approved or waitlisted request from My shelf. When all copies are unavailable, you can join the waitlist.</p>
+    <h2>Issue and return</h2><p>A librarian records the issue date and due date. The suggested due date is 14 days after issue, and the librarian can set a different date. Check My shelf for your actual due date and request a renewal if needed. A librarian reviews requests; overdue loans and titles with waiting readers cannot be renewed. When you return a book, the librarian records the return and the copy becomes available again.</p>
+    <h2>Overdue fines</h2><p>The current daily rate for new loans is <strong>₹{{'%.2f'|format(rate)}} per overdue calendar day</strong>. Each loan keeps the rate in effect when it was issued. Librarians can also record a separate fine with a reason and amount, visible on My shelf. Members can pay recorded fines and finalised overdue fines from My shelf. The overdue fine starts on the day after the due date and is calculated through the return date. Your shelf shows the current amount, and the librarian records the final amount on return.</p>
+    <p>For example, at the current rate, a book returned three days after its due date would have a fine of ₹{{'%.2f'|format(rate * 3)}}. The rate recorded on your own loan determines its fine.</p>
+    <h2>Questions about your record</h2><p>Contact a librarian if you think a due date, return or fine is incorrect.</p>
+  {% else %}
+    <h1>Privacy</h1><p class="policy-lead">Your account information helps the library manage your membership and activity.</p>
+    <h2>Information in your account</h2><p>Shelfora stores your name, email address and a securely hashed password, and any phone number or address you provide, along with your reservations, book loans, return dates, fines and reading-room bookings. Librarians can access records to manage library services.</p>
+    <h2>Your library assistant</h2><p>When you ask Mira a question, your question, recent conversation, catalogue information and relevant records from your signed-in account are sent to an external AI service to generate an answer. Avoid including information that is unrelated to your library question.</p>
+    <h2>Access and updates</h2><p>You can update your name and email in your profile and view your reservations, loans and upcoming seats on My shelf. Contact a librarian about corrections or account closure.</p>
+    <h2>Session information</h2><p>Shelfora uses a session cookie to keep you signed in and protect forms while you use the site.</p>
+  {% endif %}
+  </article>
+</div>
+{% endblock %}

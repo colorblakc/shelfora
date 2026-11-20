@@ -1,0 +1,157 @@
+CREATE TABLE IF NOT EXISTS users (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(100) NOT NULL,
+ email VARCHAR(254) NOT NULL UNIQUE,
+ phone VARCHAR(30),
+ address VARCHAR(500),
+ address_line2 VARCHAR(200),
+ region VARCHAR(100),
+ city VARCHAR(100),
+ postal_code VARCHAR(12),
+ avatar VARCHAR(20),
+ password_hash VARCHAR(255) NOT NULL,
+ role ENUM('member','admin') NOT NULL DEFAULT 'member',
+ active BOOLEAN NOT NULL DEFAULT TRUE,
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS books (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ seed_key VARCHAR(32) UNIQUE,
+ title VARCHAR(200) NOT NULL,
+ author VARCHAR(140) NOT NULL,
+ category VARCHAR(60) NOT NULL,
+ published SMALLINT UNSIGNED,
+ isbn VARCHAR(17),
+ publisher VARCHAR(150),
+ description TEXT NOT NULL,
+ copies SMALLINT UNSIGNED NOT NULL,
+ archived BOOLEAN NOT NULL DEFAULT FALSE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS reservations (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ user_id INT UNSIGNED NOT NULL,
+ book_id INT UNSIGNED NOT NULL,
+ status ENUM('pending','approved','rejected','cancelled','issued') NOT NULL DEFAULT 'pending',
+ requested_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ INDEX (book_id,status), INDEX (user_id,status),
+ FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (book_id) REFERENCES books(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS loans (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ book_id INT UNSIGNED NOT NULL,
+ user_id INT UNSIGNED NOT NULL,
+ reservation_id INT UNSIGNED UNIQUE,
+ issued DATE NOT NULL, due DATE NOT NULL, returned DATE,
+ daily_rate DECIMAL(7,2) NOT NULL, fine DECIMAL(12,2),
+ INDEX (book_id,returned), INDEX (user_id,returned),
+ FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (book_id) REFERENCES books(id),
+ FOREIGN KEY (reservation_id) REFERENCES reservations(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS settings (
+ id TINYINT PRIMARY KEY, daily_rate DECIMAL(7,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO settings(id,daily_rate) VALUES(1,2.00) ON DUPLICATE KEY UPDATE id=1;
+
+CREATE TABLE IF NOT EXISTS seats (
+ id SMALLINT UNSIGNED PRIMARY KEY, label VARCHAR(10) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO seats (id,label) VALUES
+ (1,'A1'),(2,'A2'),(3,'A3'),(4,'A4'),(5,'B1'),(6,'B2'),(7,'B3'),(8,'B4'),
+ (9,'C1'),(10,'C2'),(11,'C3'),(12,'C4'),(13,'D1'),(14,'D2'),(15,'D3'),(16,'D4')
+ ON DUPLICATE KEY UPDATE id=id;
+
+CREATE TABLE IF NOT EXISTS seat_bookings (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, seat_id SMALLINT UNSIGNED NOT NULL,
+ user_id INT UNSIGNED NOT NULL, visit_date DATE NOT NULL,
+ period ENUM('morning','afternoon') NOT NULL,
+ UNIQUE (seat_id,visit_date,period), UNIQUE (user_id,visit_date,period),
+ FOREIGN KEY (seat_id) REFERENCES seats(id), FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS manual_fines (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ user_id INT UNSIGNED NOT NULL,
+ created_by INT UNSIGNED NOT NULL,
+ reason VARCHAR(200) NOT NULL,
+ amount DECIMAL(9,2) NOT NULL,
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ INDEX (user_id),
+ FOREIGN KEY (user_id) REFERENCES users(id),
+ FOREIGN KEY (created_by) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS fine_payments (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ user_id INT UNSIGNED NOT NULL,
+ fine_kind ENUM('manual','loan') NOT NULL,
+ fine_id INT UNSIGNED NOT NULL,
+ amount_paise BIGINT UNSIGNED NOT NULL,
+ order_id VARCHAR(100) UNIQUE,
+ payment_id VARCHAR(100) UNIQUE,
+ status ENUM('creating','pending','paid','needs_review') NOT NULL DEFAULT 'creating',
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ paid_at DATETIME,
+ UNIQUE KEY fine_identity(fine_kind,fine_id),
+ FOREIGN KEY(user_id) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS renewal_requests (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ loan_id INT UNSIGNED NOT NULL, user_id INT UNSIGNED NOT NULL,
+ status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending',
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ reviewed_at DATETIME, FOREIGN KEY (loan_id) REFERENCES loans(id),
+ FOREIGN KEY (user_id) REFERENCES users(id), INDEX (loan_id,status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+CREATE TABLE IF NOT EXISTS fine_history (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, fine_id INT UNSIGNED NOT NULL,
+ changed_by INT UNSIGNED NOT NULL, action VARCHAR(20) NOT NULL,
+ previous_amount DECIMAL(9,2) NOT NULL, previous_reason VARCHAR(200) NOT NULL,
+ explanation VARCHAR(200), created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (fine_id) REFERENCES manual_fines(id), FOREIGN KEY (changed_by) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS payment_refunds (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ fine_payment_id INT UNSIGNED NOT NULL UNIQUE, requested_by INT UNSIGNED NOT NULL,
+ reason VARCHAR(200) NOT NULL, provider_id VARCHAR(100) UNIQUE,
+ status ENUM('submitting','uncertain','pending','processed','failed') NOT NULL DEFAULT 'submitting',
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (fine_payment_id) REFERENCES fine_payments(id), FOREIGN KEY (requested_by) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+CREATE TABLE IF NOT EXISTS book_copies (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ book_id INT UNSIGNED NOT NULL,
+ barcode VARCHAR(64) NOT NULL UNIQUE,
+ condition_status ENUM('good','damaged','lost','retired') NOT NULL DEFAULT 'good',
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ INDEX (book_id,condition_status), FOREIGN KEY (book_id) REFERENCES books(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS lending_overrides (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ user_id INT UNSIGNED NOT NULL, staff_id INT UNSIGNED NOT NULL,
+ action ENUM('issue','close_account') NOT NULL,
+ reason VARCHAR(500) NOT NULL, restrictions VARCHAR(500) NOT NULL,
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (staff_id) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS loan_fine_waivers (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, loan_id INT UNSIGNED NOT NULL UNIQUE,
+ waived_by INT UNSIGNED NOT NULL, amount DECIMAL(12,2) NOT NULL, reason VARCHAR(200) NOT NULL,
+ created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (loan_id) REFERENCES loans(id), FOREIGN KEY (waived_by) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

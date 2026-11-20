@@ -1,0 +1,64 @@
+/* The homepage's focal composition uses the existing violet identity at full strength. */
+.hero {
+  min-height: 350px;
+  background: #3c38cc;
+  color: #fff;
+}
+.hero-copy {
+  position: relative;
+  width: 60%;
+  padding: 42px;
+}
+.hero h1 {
+  max-width: 10ch;
+  font-size: clamp(3rem, 4.6vw, 4.65rem);
+  font-weight: 650;
+  color: #fff;
+}
+.hero h1 em {
+  color: #e2e4ff;
+  font-weight: 450;
+}
+.hero p {
+  max-width: 34ch;
+  color: #f0f0ff;
+  margin-block: 19px 25px;
+}
+.hero-art {
+  inset: 10px 12px 10px 52%;
+  background: url(images/reader-bold.webp) center / contain no-repeat;
+  opacity: 1;
+  mask-image: none;
+}
+.hero .search-box {
+  max-width: 430px;
+  box-shadow: 0 7px 18px #17145520;
+}
+.hero .search-box button {
+  background: #242095;
+}
+@media (max-width: 1100px) {
+  .hero-copy { padding: 32px; width: 63%; }
+  .hero-art { left: 53%; right: 4px; }
+}
+@media (max-width: 620px) {
+  .hero {
+    min-height: 445px;
+    align-items: flex-start;
+  }
+  .hero-copy {
+    width: 100%;
+    max-width: none;
+    padding: 25px 23px 0;
+  }
+  .hero h1 { font-size: 2.85rem; max-width: 10ch; }
+  .hero p { max-width: 27ch; font-size: .93rem; margin-block: 15px 19px; }
+  .hero-art {
+    inset: auto 14px 0 auto;
+    width: 205px;
+    height: 175px;
+    background-position: right bottom;
+    opacity: 1;
+  }
+  .hero .search-box { position: relative; z-index: 1; }
+}

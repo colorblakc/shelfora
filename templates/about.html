@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% block main %}
+<section class="about-intro">
+  <p class="about-kicker">OUR STORY</p>
+  <h1>A little more room<br>for <em>reading.</em></h1>
+  <p>Shelfora brings the everyday work of a library together, from finding a book and reserving it to keeping track of loans and reading-room seats.</p>
+  <a class="btn btn-primary" href="{{url_for('catalogue')}}">Explore the catalogue</a>
+</section>
+<section class="about-purpose">
+  <div><h2>Made for the library community</h2><p>Shelfora is a library management project for small academic and institutional libraries. Members can explore the catalogue and follow their activity, while librarians can manage records, reservations and circulation in one place.</p></div>
+  <div class="about-purpose-image" role="img" aria-label="Illustration of a reader at a desk"></div>
+</section>
+<section class="founders">
+  <div class="founder-heading"><h2>Meet the founders</h2><p>The team behind Shelfora.</p></div>
+  <div class="founder-grid">
+    <article class="founder-card"><div class="founder-photo founder-shruti" role="img" aria-label="Illustrated portrait of Shruti with open brownish-black hair"></div><h3>Shruti Chopde</h3><p>Lead Founder</p></article>
+    <article class="founder-card"><div class="founder-photo founder-suhani" role="img" aria-label="Illustrated portrait of Suhani with a curly black ponytail"></div><h3>Suhani Suryawanshi</h3><p>Co-founder</p></article>
+    <article class="founder-card"><div class="founder-photo founder-aishwarya" role="img" aria-label="Illustrated portrait of Aishwarya with a straight black ponytail"></div><h3>Aishwarya Sadaphule</h3><p>Co-founder</p></article>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,114 @@
+/* Mira, the library assistant: a floating widget in Shelfora's own palette.
+   Soft indigo header, round avatar, green live dot, indigo member bubbles, hairline book cards. */
+.mira-widget {
+  --edge: clamp(.75rem, 2.5vw, 1.5rem);
+  --mira-bottom: calc(var(--edge) + env(safe-area-inset-bottom, 0px));
+  --mira-right: calc(var(--edge) + env(safe-area-inset-right, 0px));
+  --mira-ease: cubic-bezier(.2, .7, .2, 1);
+  font: 400 .9375rem/1.5 Archivo, Arial, sans-serif; color: var(--ink, #1f2443);
+}
+.mira-widget[hidden], .mira-widget [hidden] { display: none !important }
+.mira-widget *, .mira-widget *::before, .mira-widget *::after { box-sizing: border-box }
+.mira-widget button, .mira-widget input { font: inherit }
+.mira-widget svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
+
+.mira-live { position: relative; display: inline-block; flex: none; width: .5rem; height: .5rem; border-radius: 50%; background: var(--green, #087a53) }
+.mira-live::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--green, #087a53); opacity: 0; animation: mira-ping 2.6s var(--mira-ease) infinite }
+@keyframes mira-ping { 0% { transform: scale(.55); opacity: .75 } 70%, 100% { transform: scale(1.35); opacity: 0 } }
+
+/* Launcher */
+.mira-toggle { position: fixed; z-index: 20; right: var(--mira-right); bottom: var(--mira-bottom); display: inline-flex; align-items: center; gap: .6rem; min-height: 3.25rem; padding: .3rem 1.15rem .3rem .3rem; border: 0; border-radius: 999px; background: var(--blue, #3c38cc); color: #fff; font-weight: 600; letter-spacing: -.005em; box-shadow: 0 6px 22px #211c6738; transition: background-color 150ms var(--mira-ease), transform 150ms var(--mira-ease) }
+.mira-toggle:hover { background: #2f2bab }
+.mira-toggle:active { transform: translateY(1px) }
+.mira-face { position: relative; flex: none; display: block; width: 2.6rem; height: 2.6rem }
+.mira-toggle > img, .mira-face img, .mira-mark { display: block; width: 2.6rem; height: 2.6rem; max-width: 2.6rem; max-height: 2.6rem; object-fit: cover; border-radius: 50% }
+.mira-face .mira-live { position: absolute; top: -.05rem; right: -.05rem; width: .7rem; height: .7rem; border: 2px solid var(--blue, #3c38cc); box-sizing: content-box; margin: -2px }
+.mira-face .mira-live::after { inset: -6px }
+/* Where the page's main action sits near the corner the launcher shrinks to the avatar. */
+.mira-widget.is-compact .mira-toggle { padding: .25rem; gap: 0 }
+.mira-widget.is-compact .mira-toggle-label, .mira-toggle-label.is-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
+@media (max-width: 640px) { .mira-toggle { padding: .25rem; gap: 0 } .mira-toggle-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap } }
+
+/* Panel */
+.mira-panel { position: fixed; z-index: 21; right: var(--mira-right); bottom: var(--mira-bottom); display: flex; flex-direction: column; width: min(25rem, calc(100vw - 2 * var(--edge))); height: min(38rem, calc(100dvh - 2 * var(--edge) - 5rem)); background: #fff; border: 1px solid var(--line, #dfe2f4); border-radius: 18px; overflow: hidden; box-shadow: 0 14px 40px #19175a33; transform-origin: 100% 100%; animation: mira-rise 220ms var(--mira-ease) }
+@keyframes mira-rise { from { opacity: 0; transform: translateY(14px) scale(.97) } to { opacity: 1; transform: none } }
+.mira-panel header { display: flex; align-items: center; gap: .65rem; padding: .8rem .6rem .8rem 1rem; background: var(--soft, #efefff); border-bottom: 1px solid var(--line, #dfe2f4); color: var(--deep, #202090) }
+.mira-mark { flex: none; width: 2.6rem; height: 2.6rem }
+.mira-panel header div { flex: 1; min-width: 0 }
+.mira-panel header h2 { margin: 0; font-size: 1.05rem; font-weight: 700; line-height: 1.15; letter-spacing: -.015em }
+.mira-panel header p { display: flex; align-items: center; gap: .45rem; margin: .2rem 0 0; font-size: .8rem; line-height: 1.3; color: var(--muted, #545c78) }
+.mira-icon { display: grid; place-items: center; flex: none; width: 2.5rem; height: 2.5rem; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--deep, #202090); transition: background-color 150ms var(--mira-ease) }
+.mira-icon:hover { background: #e0dfff }
+.mira-widget .mira-toggle:focus-visible, .mira-widget .mira-icon:focus-visible, .mira-widget .mira-send:focus-visible, .mira-widget .mira-chips button:focus-visible { outline: 3px solid #4989c4 !important; outline-offset: 2px }
+
+/* Conversation */
+.mira-messages { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: .85rem; padding: 1rem; overflow-y: auto; overscroll-behavior: contain; background: var(--pale, #f7f8ff); scrollbar-width: thin }
+.mira-messages:focus-visible { outline-offset: -3px }
+.mira-msg { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; max-width: 100% }
+.mira-msg--bot { flex-direction: row; gap: .5rem }
+.mira-avatar { flex: none; width: 1.75rem; height: 1.75rem; margin-top: .1rem; border-radius: 50%; object-fit: cover }
+.mira-msg-body { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; min-width: 0; flex: 1 }
+.mira-msg--user { align-items: flex-end }
+.mira-bubble { max-width: 100%; padding: .6rem .85rem; border-radius: 16px 16px 16px 5px; background: #fff; border: 1px solid var(--line, #dfe2f4); color: var(--ink, #1f2443); line-height: 1.55; word-spacing: .05em; font-kerning: normal; overflow-wrap: anywhere; text-wrap: pretty }
+.mira-msg--user .mira-bubble { max-width: 85%; border: 0; border-radius: 16px 16px 5px 16px; background: var(--blue, #3c38cc); color: #fff; white-space: pre-wrap }
+.mira-bubble p { margin: 0 0 .5rem }
+.mira-bubble > :last-child { margin-bottom: 0 }
+.mira-bubble ul, .mira-bubble ol { margin: 0 0 .5rem; padding-left: 1.15rem }
+.mira-bubble li { margin: 0 0 .2rem; padding-left: .1rem }
+.mira-bubble li::marker { color: var(--muted, #545c78) }
+.mira-bubble strong { font-weight: 650 }
+.mira-bubble a { font-weight: 600 }
+
+/* Book cards: ruled rows under the reply, never nested inside the bubble. */
+.mira-cards { display: grid; gap: .4rem; width: 100%; margin: 0; padding: 0; list-style: none }
+.mira-card { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .7rem; align-items: center; padding: .5rem; border: 1px solid var(--line, #dfe2f4); border-radius: 12px; background: #fff; color: var(--ink, #1f2443); text-decoration: none; transition: border-color 150ms var(--mira-ease), background-color 150ms var(--mira-ease) }
+.mira-card:hover { border-color: var(--blue, #3c38cc); background: var(--soft, #efefff); color: var(--ink, #1f2443) }
+.mira-card-img { width: 2.6rem; height: 3.5rem; border-radius: 5px; background: var(--soft, #efefff); object-fit: cover; display: grid; place-items: center; color: var(--blue, #3c38cc) }
+.mira-card-body { min-width: 0; display: grid; gap: .1rem }
+.mira-card-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .9rem; font-weight: 640; line-height: 1.25 }
+.mira-card-author { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .8rem; color: var(--muted, #545c78) }
+.mira-avail { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 600; color: var(--green, #087a53) }
+.mira-avail::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: currentColor }
+.mira-avail.is-out { color: var(--red, #ae4820) }
+
+/* Typing, errors and retry */
+.mira-typing { display: inline-flex; align-items: center; gap: .3rem; padding: .85rem .95rem; border-radius: 16px 16px 16px 5px; background: #fff; border: 1px solid var(--line, #dfe2f4) }
+.mira-typing i { width: .4rem; height: .4rem; border-radius: 50%; background: #9a99d8; animation: mira-dot 1.2s var(--mira-ease) infinite }
+.mira-typing i:nth-child(2) { animation-delay: .15s } .mira-typing i:nth-child(3) { animation-delay: .3s }
+@keyframes mira-dot { 0%, 60%, 100% { transform: none; opacity: .45 } 30% { transform: translateY(-3px); opacity: 1 } }
+.mira-bubble--error { background: #fdf1ec; border-color: #efc4b3; color: #8a3414 }
+.mira-retry { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.25rem; margin-top: .5rem; padding: .35rem .85rem; border: 1px solid #e0b09c; border-radius: 999px; background: #fff; color: #8a3414; font-size: .85rem; font-weight: 600 }
+.mira-retry:hover { background: #fdf1ec; border-color: var(--red, #ae4820) }
+.mira-retry svg { width: 1rem; height: 1rem }
+
+/* Suggested questions: after the first reply they become one scrolling row so the conversation keeps its height. */
+.mira-chips { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 1rem .75rem; background: var(--pale, #f7f8ff) }
+.mira-chips button { min-height: 2.25rem; padding: .3rem .8rem; border: 1px solid #c9c8f5; border-radius: 999px; background: #fff; color: var(--deep, #202090); font-size: .85rem; font-weight: 580; text-align: left; transition: border-color 150ms var(--mira-ease), background-color 150ms var(--mira-ease) }
+.mira-chips button:hover { border-color: var(--blue, #3c38cc); background: var(--soft, #efefff) }
+.mira-chips.is-slim { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: .65rem }
+.mira-chips.is-slim button { flex: none; white-space: nowrap }
+.mira-chips.is-slim::-webkit-scrollbar { display: none }
+
+/* Composer */
+.mira-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .5rem; margin: 0; padding: .65rem .75rem; border-top: 1px solid var(--line, #dfe2f4); background: #fff }
+.mira-form input { min-width: 0; min-height: 2.75rem; margin: 0; padding: 0 .9rem; border: 1px solid #aebac7; border-radius: 999px; background: #fff; color: var(--ink, #1f2443); font-size: 1rem }
+.mira-form input:focus, .mira-form input:focus-visible { outline: 0 !important; border-color: var(--blue, #3c38cc); box-shadow: 0 0 0 3px #3c38cc30 }
+.mira-form input:disabled { background: var(--pale, #f7f8ff) }
+.mira-send { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; border: 0; border-radius: 50%; background: var(--blue, #3c38cc); color: #fff; transition: background-color 150ms var(--mira-ease) }
+.mira-send:hover { background: #2f2bab }
+.mira-send[disabled] { background: #e3e4f0; color: #7a809a; cursor: not-allowed }
+
+/* Phones: a full-height sheet that respects the notch and the on-screen keyboard. */
+@media (max-width: 639.98px) {
+  .mira-panel { right: 0; left: 0; top: 0; bottom: 0; width: 100%; height: var(--mira-sheet-h, 100dvh); margin-bottom: var(--mira-kb, 0px); border: 0; border-radius: 0; transform-origin: 50% 100% }
+  .mira-form { padding-bottom: calc(.65rem + env(safe-area-inset-bottom, 0px)) }
+  .mira-widget.is-compact .mira-toggle { right: auto; left: var(--mira-right) }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mira-panel { animation: none }
+  .mira-live::after { animation: none; opacity: 0 }
+  .mira-typing i { animation: none; opacity: .7 }
+  .mira-toggle, .mira-card, .mira-chips button, .mira-send, .mira-icon { transition: none }
+}
+@media (forced-colors: active) { .mira-bubble, .mira-card, .mira-chips button { border: 1px solid CanvasText } }
+@media print { .mira-widget { display: none !important } }

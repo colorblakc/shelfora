@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block title %}Payment receipt{% endblock %}{% block main %}
+<section class="panel policy-content"><a href="{{url_for('shelf')}}">← Back to my shelf</a><h1>Payment receipt</h1><p>Payment confirmed for your library fine.{% if refund %} Refund status: {{refund.status}}.{% endif %}</p><dl class="book-metadata"><div><dt>Member</dt><dd>{{g.user.name}}</dd></div><div><dt>Fine</dt><dd>{{detail.title}}</dd></div><div><dt>Amount paid</dt><dd>₹{{'%.2f'|format(payment.amount_paise / 100)}}</dd></div><div><dt>Date</dt><dd>{{payment.paid_at|nice_date}}</dd></div><div><dt>Payment reference</dt><dd>{{payment.payment_id}}</dd></div></dl><button type="button" class="outline-link" onclick="window.print()">Print receipt</button></section>
+{% endblock %}

@@ -1,0 +1,13 @@
+.avatar-picker > p { color:var(--muted); margin-top:8px; }
+.avatar-form { display:grid; gap:18px; margin-top:16px; }
+.avatar-form > button { justify-self:start; }
+.avatar-choices { display:grid; grid-template-columns:repeat(5,minmax(0,56px)); gap:12px; padding:0; border:0; }
+.avatar-choice { position:relative; display:block; width:56px; height:56px; cursor:pointer; }
+.avatar-choice input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.avatar-choice img,.avatar-initial { display:grid; place-items:center; width:56px; height:56px; border-radius:50%; object-fit:cover; border:3px solid transparent; }
+.avatar-initial { background:var(--soft); color:var(--blue); font-weight:700; font-size:1.2rem; }
+.avatar-choice input:checked + img,.avatar-choice input:checked + .avatar-initial { border-color:var(--blue); }
+.avatar-choice input:focus-visible + img,.avatar-choice input:focus-visible + .avatar-initial { outline:3px solid #4989c4; outline-offset:3px; }
+.avatar-credit { font-size:.8rem; }
+.profile-link img.initial { object-fit:cover; }
+@media(max-width:360px) { .avatar-choices { grid-template-columns:repeat(4,minmax(0,56px)); } }

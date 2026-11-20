@@ -1,0 +1,1162 @@
+[
+  {
+    "key": "book-001",
+    "title": "The Screwtape Letters",
+    "author": "C. S. Lewis",
+    "isbn": "9780007131877",
+    "year": 1942,
+    "subjects": [
+      "Fiction",
+      "Christian Apologetics",
+      "Devil",
+      "Aspect religieux"
+    ]
+  },
+  {
+    "key": "book-002",
+    "title": "Papillon",
+    "author": "Henri Charrière",
+    "isbn": "9780007115242",
+    "year": 1969,
+    "subjects": [
+      "Prisoners, biography",
+      "Escapes",
+      "Prisoners",
+      "Biography"
+    ]
+  },
+  {
+    "key": "book-003",
+    "title": "Tracks",
+    "author": "Louise Erdrich",
+    "isbn": "9780006546214",
+    "year": 1988,
+    "subjects": [
+      "Fiction, general",
+      "Ojibwa Indians",
+      "Fiction",
+      "Indians of north america, fiction"
+    ]
+  },
+  {
+    "key": "book-004",
+    "title": "I am not going to get up today!",
+    "author": "Dr. Seuss",
+    "isbn": "9780001957879",
+    "year": 1987,
+    "subjects": [
+      "Humorous stories",
+      "Fiction",
+      "Beds",
+      "Stories in rhyme"
+    ]
+  },
+  {
+    "key": "book-005",
+    "title": "Sharpe's Tiger",
+    "author": "Bernard Cornwell",
+    "isbn": "9780002250108",
+    "year": 1997,
+    "subjects": [
+      "Richard Sharpe (Fictitious character)",
+      "India Mysore War, 1799",
+      "Military History",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-006",
+    "title": "Mog, the forgetful cat",
+    "author": "Judith Kerr",
+    "isbn": "9780001004344",
+    "year": 1970,
+    "subjects": [
+      "Children's stories, Gaelic",
+      "Children's stories, Irish",
+      "Juvenile fiction",
+      "Cats"
+    ]
+  },
+  {
+    "key": "book-007",
+    "title": "Empire of the Sun",
+    "author": "J. G. Ballard",
+    "isbn": "9780006547006",
+    "year": 1984,
+    "subjects": [
+      "Fiction",
+      "World War, 1939-1945",
+      "Boys",
+      "History"
+    ]
+  },
+  {
+    "key": "book-008",
+    "title": "A Stranger in the Mirror",
+    "author": "Sidney Sheldon",
+    "isbn": "9780006471257",
+    "year": 1976,
+    "subjects": [
+      "Actresses",
+      "American Love stories",
+      "Comedians",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-009",
+    "title": "Robert Ludlum's The Cassandra Compact",
+    "author": "Robert Ludlum",
+    "isbn": "9780007101702",
+    "year": 2001,
+    "subjects": [
+      "Fiction, thrillers, suspense",
+      "Medical research personnel",
+      "Fiction",
+      "Bioterrorism"
+    ]
+  },
+  {
+    "key": "book-010",
+    "title": "The Nursing Home Murder",
+    "author": "Ngaio Marsh",
+    "isbn": "9780006512530",
+    "year": 1935,
+    "subjects": [
+      "Fiction",
+      "Roderick Alleyn (Fictitious character)",
+      "Police",
+      "Fiction in English"
+    ]
+  },
+  {
+    "key": "book-011",
+    "title": "The owl service",
+    "author": "Alan Garner",
+    "isbn": "9780006742944",
+    "year": 1967,
+    "subjects": [
+      "Legends",
+      "Juvenile fiction",
+      "Space and time",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-012",
+    "title": "Honoured Enemy",
+    "author": "Raymond E. Feist",
+    "isbn": "9780002247184",
+    "year": 2001,
+    "subjects": [
+      "Fantasy",
+      "Fiction",
+      "Fiction, fantasy, general",
+      "Fantasy fiction"
+    ]
+  },
+  {
+    "key": "book-013",
+    "title": "Tree of Yoga",
+    "author": "B. K. S. Iyengar",
+    "isbn": "9780007106998",
+    "year": 1988,
+    "subjects": [
+      "Yoga",
+      "Philosophy"
+    ]
+  },
+  {
+    "key": "book-014",
+    "title": "Hand in Glove",
+    "author": "Ngaio Marsh",
+    "isbn": "9780006512486",
+    "year": 1962,
+    "subjects": [
+      "Mystery",
+      "Police",
+      "Open Library Staff Picks",
+      "Fiction in English"
+    ]
+  },
+  {
+    "key": "book-015",
+    "title": "High Citadel",
+    "author": "Desmond Bagley",
+    "isbn": "9780006155843",
+    "year": 1965,
+    "subjects": [
+      "Mystery",
+      "Thriller",
+      "Adventure",
+      "Survival"
+    ]
+  },
+  {
+    "key": "book-016",
+    "title": "The Queen's confession",
+    "author": "Eleanor Burford",
+    "isbn": "9780006123255",
+    "year": 1876,
+    "subjects": [
+      "Fiction",
+      "Fiction in English",
+      "Fictionin English",
+      "Queens"
+    ]
+  },
+  {
+    "key": "book-017",
+    "title": "Murder in LaMut",
+    "author": "Raymond E. Feist",
+    "isbn": "9780002247207",
+    "year": 2002,
+    "subjects": [
+      "Imaginary wars and battles",
+      "Fiction",
+      "Fiction, fantasy, general",
+      "Fantasy"
+    ]
+  },
+  {
+    "key": "book-018",
+    "title": "Mary Poppins in the Park",
+    "author": "Pamela L. Travers",
+    "isbn": "9780006705192",
+    "year": 1934,
+    "subjects": [
+      "Nannies",
+      "Juvenile fiction",
+      "Fantasy",
+      "Magic"
+    ]
+  },
+  {
+    "key": "book-019",
+    "title": "L'invitée",
+    "author": "Simone de Beauvoir",
+    "isbn": "9780006540809",
+    "year": 1943,
+    "subjects": [
+      "Triangles (Interpersonal relations)",
+      "Man-woman relationships",
+      "Fiction",
+      "French language materials"
+    ]
+  },
+  {
+    "key": "book-020",
+    "title": "Florida Roadkill",
+    "author": "Tim Dorsey",
+    "isbn": "9780006513056",
+    "year": 1999,
+    "subjects": [
+      "Florida, fiction",
+      "Fiction, action & adventure",
+      "Criminals, fiction",
+      "Fiction, humorous, general"
+    ]
+  },
+  {
+    "key": "book-021",
+    "title": "Ring",
+    "author": "Stephen Baxter",
+    "isbn": "9780006482215",
+    "year": 1994,
+    "subjects": [
+      "Time travel",
+      "Fiction",
+      "Fiction, science fiction, general"
+    ]
+  },
+  {
+    "key": "book-022",
+    "title": "Eight Days of Luke",
+    "author": "Diana Wynne Jones",
+    "isbn": "9780006755210",
+    "year": 1975,
+    "subjects": [
+      "Fiction",
+      "Supernatural",
+      "Fiction in English",
+      "Children's stories"
+    ]
+  },
+  {
+    "key": "book-023",
+    "title": "Winter Story (Brambly Hedge)",
+    "author": "Jill Barklem",
+    "isbn": "9780001837119",
+    "year": 1980,
+    "subjects": [
+      "Children's fiction",
+      "Mice, fiction",
+      "Winter, fiction",
+      "Country life, fiction"
+    ]
+  },
+  {
+    "key": "book-024",
+    "title": "Last Ditch",
+    "author": "Ngaio Marsh",
+    "isbn": "9780006512295",
+    "year": 1976,
+    "subjects": [
+      "Fiction",
+      "Roderick Alleyn (Fictitious character)",
+      "Police",
+      "Fiction in English"
+    ]
+  },
+  {
+    "key": "book-025",
+    "title": "The Monster of Florence",
+    "author": "Magdalen Nabb",
+    "isbn": "9780006499510",
+    "year": 1996,
+    "subjects": [
+      "Italy, fiction",
+      "Marshal Guarnaccia (Fictitious character)",
+      "Police",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-026",
+    "title": "Sam and the Firefly",
+    "author": "P. D. Eastman",
+    "isbn": "9780001713192",
+    "year": 1958,
+    "subjects": [
+      "Picture Books",
+      "Beginner Books",
+      "Owls",
+      "Easy Readers"
+    ]
+  },
+  {
+    "key": "book-027",
+    "title": "The Sword of Bedwyr",
+    "author": "R. A. Salvatore",
+    "isbn": "9780006483434",
+    "year": 1995,
+    "subjects": [
+      "Fiction, fantasy, epic",
+      "Fiction",
+      "Crimson Shadow(Fictitious character)",
+      "Eriador (Imaninary place)"
+    ]
+  },
+  {
+    "key": "book-028",
+    "title": "Priestess of Avalon",
+    "author": "Marion Zimmer Bradley",
+    "isbn": "9780002247092",
+    "year": 2000,
+    "subjects": [
+      "Avalon (Legendary place)",
+      "Christian women saints",
+      "Druids and Druidism",
+      "Merlin (Legendary character)"
+    ]
+  },
+  {
+    "key": "book-029",
+    "title": "Cocaine Nights",
+    "author": "J. G. Ballard",
+    "isbn": "9780002241359",
+    "year": 1996,
+    "subjects": [
+      "Fiction",
+      "Retirees",
+      "British",
+      "Detective and mystery stories"
+    ]
+  },
+  {
+    "key": "book-030",
+    "title": "Quantico",
+    "author": "Greg Bear",
+    "isbn": "9780007129782",
+    "year": 2005,
+    "subjects": [
+      "War on Terrorism, 2001-2009",
+      "War on Terrorism, 2001-",
+      "Fiction",
+      "Intelligence service"
+    ]
+  },
+  {
+    "key": "book-031",
+    "title": "Cars, Trucks and Things That Go",
+    "author": "Richard Scarry",
+    "isbn": "9780007111442",
+    "year": 1974,
+    "subjects": [
+      "Fiction",
+      "Transportation",
+      "Vehicles",
+      "Cars"
+    ]
+  },
+  {
+    "key": "book-032",
+    "title": "The white bone",
+    "author": "Barbara Gowdy",
+    "isbn": "9780006551546",
+    "year": 1998,
+    "subjects": [
+      "Elephants",
+      "Fiction",
+      "Behavior",
+      "African elephant"
+    ]
+  },
+  {
+    "key": "book-033",
+    "title": "White Mughals",
+    "author": "William Dalrymple",
+    "isbn": "9780006550969",
+    "year": 2002,
+    "subjects": [
+      "Social life and customs",
+      "Race relations",
+      "Outlook of Empire",
+      "British"
+    ]
+  },
+  {
+    "key": "book-034",
+    "title": "Witch",
+    "author": "Fiona Horne",
+    "isbn": "9780007103997",
+    "year": 1998,
+    "subjects": [
+      "Witchcraft",
+      "Autobiography and memoir",
+      "Folklore and mythology",
+      "Witches"
+    ]
+  },
+  {
+    "key": "book-035",
+    "title": "Mutants",
+    "author": "Armand Marie Leroi",
+    "isbn": "9780002571135",
+    "year": 2003,
+    "subjects": [
+      "History",
+      "Mutation (Biology)",
+      "Genetic aspects",
+      "Abnormalities, Human"
+    ]
+  },
+  {
+    "key": "book-036",
+    "title": "Demanding the Impossible",
+    "author": "Peter H. Marshall",
+    "isbn": "9780006862451",
+    "year": 1991,
+    "subjects": [
+      "Anarchists",
+      "Anarchism",
+      "History",
+      "POLITICAL SCIENCE"
+    ]
+  },
+  {
+    "key": "book-037",
+    "title": "Flashman and the Dragon (Flashman)",
+    "author": "George MacDonald Fraser",
+    "isbn": "9780006513032",
+    "year": 1985,
+    "subjects": [
+      "Fiction, historical, general",
+      "China, fiction",
+      "Fiction, action & adventure",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-038",
+    "title": "Trash",
+    "author": "Dorothy Allison",
+    "isbn": "9780006547600",
+    "year": 1988,
+    "subjects": [
+      "Fiction",
+      "Social life and customs",
+      "Poor women",
+      "Lesbians"
+    ]
+  },
+  {
+    "key": "book-039",
+    "title": "The Marsh Arabs",
+    "author": "Wilfred Thesiger",
+    "isbn": "9780002170680",
+    "year": 1964,
+    "subjects": [
+      "Social life and customs",
+      "Marsh Arabs",
+      "Arabs",
+      "History"
+    ]
+  },
+  {
+    "key": "book-040",
+    "title": "The Peloponnesian War",
+    "author": "Donald Kagan",
+    "isbn": "9780007115051",
+    "year": 2003,
+    "subjects": [
+      "Greece Peloponnesian War, 431-404 B.C.",
+      "History",
+      "New York Times reviewed"
+    ]
+  },
+  {
+    "key": "book-041",
+    "title": "Mixed Magics (The Chrestomanci)",
+    "author": "Diana Wynne Jones",
+    "isbn": "9780006755296",
+    "year": 2000,
+    "subjects": [
+      "Children's fiction",
+      "Fantasy fiction",
+      "Magic, fiction",
+      "Fantasy"
+    ]
+  },
+  {
+    "key": "book-042",
+    "title": "Quantum Self",
+    "author": "Danah Zohar",
+    "isbn": "9780006544265",
+    "year": 1990,
+    "subjects": [
+      "Quantum theory",
+      "Philosophical anthropology",
+      "Philosophy",
+      "Physics"
+    ]
+  },
+  {
+    "key": "book-043",
+    "title": "To Ride Hell's Chasm",
+    "author": "Janny Wurts",
+    "isbn": "9780007101115",
+    "year": 2002,
+    "subjects": [
+      "Fiction",
+      "Fantasy",
+      "Soldiers",
+      "Princesses"
+    ]
+  },
+  {
+    "key": "book-044",
+    "title": "Tolkien and the Great War",
+    "author": "John Garth",
+    "isbn": "9780007119523",
+    "year": 2003,
+    "subjects": [
+      "English Fantasy fiction",
+      "Literature and history",
+      "Knowledge",
+      "Middle Earth (Imaginary place)"
+    ]
+  },
+  {
+    "key": "book-045",
+    "title": "Why Am I Afraid to Tell You Who I Am?",
+    "author": "John Powell",
+    "isbn": "9780006281054",
+    "year": 1999,
+    "subjects": [
+      "Interpersonal communication"
+    ]
+  },
+  {
+    "key": "book-046",
+    "title": "One snowy night",
+    "author": "Nick Butterworth",
+    "isbn": "9780001954793",
+    "year": 1989,
+    "subjects": [
+      "Animals",
+      "Fiction",
+      "Night",
+      "Parks"
+    ]
+  },
+  {
+    "key": "book-047",
+    "title": "Las confesiones del peregrino",
+    "author": "Paulo Coelho",
+    "isbn": "9780007114375",
+    "year": 1999,
+    "subjects": [
+      "Interviews",
+      "Brazilian Authors",
+      "ENTREVISTAS",
+      "AUTORES BRASILEÑOS"
+    ]
+  },
+  {
+    "key": "book-048",
+    "title": "Skinny",
+    "author": "Ibi Kaslik",
+    "isbn": "9780002005074",
+    "year": 2004,
+    "subjects": [
+      "Fathers and daughters",
+      "Eating disorders",
+      "Emotional problems",
+      "Sisters"
+    ]
+  },
+  {
+    "key": "book-049",
+    "title": "House of cards",
+    "author": "Michael Dobbs",
+    "isbn": "9780006176909",
+    "year": 1989,
+    "subjects": [
+      "Fiction, thrillers, general",
+      "series:House_of_Cards"
+    ]
+  },
+  {
+    "key": "book-050",
+    "title": "Messiah",
+    "author": "Boris Starling",
+    "isbn": "9780006512042",
+    "year": 1999,
+    "subjects": [
+      "London (england), fiction",
+      "Fiction, mystery & detective, general",
+      "Fiction, thrillers, general",
+      "Literature and fiction, mystery and suspense"
+    ]
+  },
+  {
+    "key": "book-051",
+    "title": "Highgate Rise (The Charlotte and Thomas Pitt Mystery Series)",
+    "author": "Anne Perry",
+    "isbn": "9780006479062",
+    "year": 1991,
+    "subjects": [
+      "Pitt, thomas (fictitious character), fiction",
+      "England, fiction",
+      "London (england), fiction",
+      "Fiction, historical, general"
+    ]
+  },
+  {
+    "key": "book-052",
+    "title": "Hand, hand, fingers, thumb",
+    "author": "Al Perkins",
+    "isbn": "9780001712706",
+    "year": 1969,
+    "subjects": [
+      "Stories in rhyme",
+      "Hand",
+      "Juvenile fiction",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-053",
+    "title": "The growing summer",
+    "author": "Noel Streatfeild",
+    "isbn": "9780006749011",
+    "year": 1960,
+    "subjects": [
+      "Teenage girls",
+      "Juvenile fiction",
+      "Teenage boys",
+      "Holidays"
+    ]
+  },
+  {
+    "key": "book-054",
+    "title": "Tactics",
+    "author": "Edward de Bono",
+    "isbn": "9780002174206",
+    "year": 1984,
+    "subjects": [
+      "Success",
+      "Biography",
+      "Erfolg",
+      "Thought and thinking"
+    ]
+  },
+  {
+    "key": "book-055",
+    "title": "Gridlock",
+    "author": "Ben Elton",
+    "isbn": "9780001046887",
+    "year": 1991,
+    "subjects": [
+      "Fiction",
+      "Thriller",
+      "Fiction, thrillers, general",
+      "Scientists, fiction"
+    ]
+  },
+  {
+    "key": "book-056",
+    "title": "The Vampire's Assistant",
+    "author": "Darren Shan",
+    "isbn": "9780006755135",
+    "year": 2000,
+    "subjects": [
+      "Juvenile fiction",
+      "Vampires",
+      "Fiction",
+      "Children's fiction"
+    ]
+  },
+  {
+    "key": "book-057",
+    "title": "A Fish Out of Water",
+    "author": "Helen Palmer",
+    "isbn": "9780001713079",
+    "year": 1963,
+    "subjects": [
+      "Fishes, fiction",
+      "Children's fiction"
+    ]
+  },
+  {
+    "key": "book-058",
+    "title": "The Salzburg Connection",
+    "author": "Helen MacInnes",
+    "isbn": "9780006172680",
+    "year": 1877,
+    "subjects": [
+      "Fiction in English",
+      "Fiction",
+      "Fiction inEnglish",
+      "Treasure troves"
+    ]
+  },
+  {
+    "key": "book-059",
+    "title": "Two in the bush",
+    "author": "Gerald Malcolm Durrell",
+    "isbn": "9780006345541",
+    "year": 1966,
+    "subjects": [
+      "Zoology",
+      "Animal behavior",
+      "Rare animals",
+      "Journeys"
+    ]
+  },
+  {
+    "key": "book-060",
+    "title": "Book of riddles",
+    "author": "Bennett Cerf",
+    "isbn": "9780001713017",
+    "year": 1960,
+    "subjects": [
+      "Riddles"
+    ]
+  },
+  {
+    "key": "book-061",
+    "title": "In a People House",
+    "author": "Dr. Seuss",
+    "isbn": "9780001712768",
+    "year": 1972,
+    "subjects": [
+      "Houses, fiction",
+      "Children's fiction",
+      "Mice, fiction",
+      "Birds, fiction"
+    ]
+  },
+  {
+    "key": "book-062",
+    "title": "My Book about Me",
+    "author": "Dr. Seuss",
+    "isbn": "9780001714014",
+    "year": 1969,
+    "subjects": [
+      "Children, juvenile literature",
+      "Children, pictorial works"
+    ]
+  },
+  {
+    "key": "book-063",
+    "title": "Black Beech and Honeydew",
+    "author": "Ngaio Marsh",
+    "isbn": "9780006512349",
+    "year": 1965,
+    "subjects": [
+      "Biography",
+      "Detective and mystery stories",
+      "Authorship",
+      "New Zealand Novelists"
+    ]
+  },
+  {
+    "key": "book-064",
+    "title": "A foreign field",
+    "author": "Ben Macintyre",
+    "isbn": "9780002571227",
+    "year": 2001,
+    "subjects": [
+      "Biography",
+      "German Prisoners and prisons",
+      "History",
+      "Missing in action"
+    ]
+  },
+  {
+    "key": "book-065",
+    "title": "White Boots",
+    "author": "Noel Streatfeild",
+    "isbn": "9780007111572",
+    "year": 1951,
+    "subjects": [
+      "children's book",
+      "ice skating",
+      "figure skating",
+      "training"
+    ]
+  },
+  {
+    "key": "book-066",
+    "title": "The Kaiser's Last Kiss",
+    "author": "Alan Judd",
+    "isbn": "9780007124466",
+    "year": 2003,
+    "subjects": [
+      "Exiles",
+      "Fiction",
+      "World War, 1939-1945",
+      "Holocaust, Jewish (1939-1945)"
+    ]
+  },
+  {
+    "key": "book-067",
+    "title": "The Switch",
+    "author": "Olivia Goldsmith",
+    "isbn": "9780006496748",
+    "year": 1998,
+    "subjects": [
+      "Impersonation",
+      "Fiction",
+      "Spouses",
+      "Mistresses"
+    ]
+  },
+  {
+    "key": "book-068",
+    "title": "Death on the Air (Travelman Crime)",
+    "author": "Ngaio Marsh",
+    "isbn": "9780006477136",
+    "year": 1995,
+    "subjects": [
+      "Roderick Alleyn (Fictitious character)",
+      "Police",
+      "New Zealand Detective and mystery stories",
+      "Fiction"
+    ]
+  },
+  {
+    "key": "book-069",
+    "title": "Offshore",
+    "author": "Penelope Fitzgerald",
+    "isbn": "9780006542568",
+    "year": 1998,
+    "subjects": [
+      "Mothers and daughters",
+      "Barges",
+      "Fiction",
+      "Fiction, family life"
+    ]
+  },
+  {
+    "key": "book-070",
+    "title": "The Trials of Life",
+    "author": "David Attenborough",
+    "isbn": "9780002199407",
+    "year": 1990,
+    "subjects": [
+      "Animal behavior",
+      "Behavior, Animal [MESH]",
+      "Natural History",
+      "Natural History [MESH]"
+    ]
+  },
+  {
+    "key": "book-071",
+    "title": "Wolf's Brother",
+    "author": "Robin Hobb",
+    "isbn": "9780007114344",
+    "year": 1988,
+    "subjects": [
+      "Fiction, science fiction, general",
+      "Fiction, fantasy, general"
+    ]
+  },
+  {
+    "key": "book-072",
+    "title": "One Good Turn",
+    "author": "Witold Rybczynski",
+    "isbn": "9780002000314",
+    "year": 2000,
+    "subjects": [
+      "Screws",
+      "Screwdrivers",
+      "History",
+      "New York Times reviewed"
+    ]
+  },
+  {
+    "key": "book-073",
+    "title": "I am Mary Dunne",
+    "author": "Brian Moore",
+    "isbn": "9780006548355",
+    "year": 1966,
+    "subjects": [
+      "Fiction",
+      "Women",
+      "Man-woman relationships",
+      "Psychology"
+    ]
+  },
+  {
+    "key": "book-074",
+    "title": "Essential Oils",
+    "author": "Julia Lawless",
+    "isbn": "9780007122493",
+    "year": 2001,
+    "subjects": [
+      "Essences and essential oils",
+      "Aromatherapy"
+    ]
+  },
+  {
+    "key": "book-075",
+    "title": "Agatha Christie",
+    "author": "Janet Morgan",
+    "isbn": "9780006369615",
+    "year": 1997,
+    "subjects": [
+      "English Novelists",
+      "Biography"
+    ]
+  },
+  {
+    "key": "book-076",
+    "title": "Truth & Bright Water",
+    "author": "Thomas King",
+    "isbn": "9780002255035",
+    "year": 1999,
+    "subjects": [
+      "Fiction",
+      "Cousins",
+      "Indian boys",
+      "Boys"
+    ]
+  },
+  {
+    "key": "book-077",
+    "title": "Human Voices",
+    "author": "Penelope Fitzgerald",
+    "isbn": "9780006542544",
+    "year": 1980,
+    "subjects": [
+      "Teenage girls",
+      "British Broadcasting Corporation",
+      "Fiction",
+      "Radio broadcasting"
+    ]
+  },
+  {
+    "key": "book-078",
+    "title": "The Reindeer People",
+    "author": "Robin Hobb",
+    "isbn": "9780007114221",
+    "year": 1988,
+    "subjects": [
+      "Fiction, general"
+    ]
+  },
+  {
+    "key": "book-079",
+    "title": "Vegan Cooking",
+    "author": "Eva Batt",
+    "isbn": "9780007129973",
+    "year": 2002,
+    "subjects": [
+      "Vegan cooking",
+      "Vegetarian cooking"
+    ]
+  },
+  {
+    "key": "book-080",
+    "title": "Brunswick Gardens (A Victorian Murder Mystery)",
+    "author": "Anne Perry",
+    "isbn": "9780006510925",
+    "year": 1998,
+    "subjects": [
+      "Thomas Pitt (Fictitious character)",
+      "Fiction",
+      "Charlotte Pitt (Fictitious character)",
+      "Pitt, thomas (fictitious character), fiction"
+    ]
+  },
+  {
+    "key": "book-081",
+    "title": "The path to power",
+    "author": "Margaret Thatcher",
+    "isbn": "9780002550505",
+    "year": 1995,
+    "subjects": [
+      "Biography",
+      "Conservative Party (Great Britain)",
+      "Politics and government",
+      "Women prime ministers"
+    ]
+  },
+  {
+    "key": "book-082",
+    "title": "Tully",
+    "author": "Paullina Simons",
+    "isbn": "9780006490012",
+    "year": 1994,
+    "subjects": [
+      "Fiction",
+      "Young women",
+      "Friendship",
+      "Bildungsromans"
+    ]
+  },
+  {
+    "key": "book-083",
+    "title": "Ross Poldark :POLDARK",
+    "author": "Winston Graham",
+    "isbn": "9780006140825",
+    "year": null,
+    "subjects": []
+  },
+  {
+    "key": "book-084",
+    "title": "The Temptation of Eileen Hughes",
+    "author": "Brian Moore",
+    "isbn": "9780006548324",
+    "year": 1981,
+    "subjects": [
+      "Fiction",
+      "Irish",
+      "Young women",
+      "Irish fiction"
+    ]
+  },
+  {
+    "key": "book-085",
+    "title": "Harpy's Flight",
+    "author": "Robin Hobb",
+    "isbn": "9780007112524",
+    "year": 1982,
+    "subjects": [
+      "American Fantasy fiction",
+      "Fiction, fantasy, general",
+      "Ki (fictitious character), fiction"
+    ]
+  },
+  {
+    "key": "book-086",
+    "title": "Statecraft",
+    "author": "Margaret Thatcher",
+    "isbn": "9780007107520",
+    "year": 2002,
+    "subjects": [
+      "Diplomacy",
+      "Foreign relations",
+      "International Security",
+      "International relations"
+    ]
+  },
+  {
+    "key": "book-087",
+    "title": "The Chronicles of Thomas Covenant the Unbeliever",
+    "author": "Stephen R. Donaldson",
+    "isbn": "9780006473299",
+    "year": 1993,
+    "subjects": [
+      "Fiction, mystery & detective, general"
+    ]
+  },
+  {
+    "key": "book-088",
+    "title": "Flashman and the tiger and other extracts from The Flashman Papers",
+    "author": "George MacDonald Fraser",
+    "isbn": "9780002259514",
+    "year": 1999,
+    "subjects": [
+      "Harry Paget Flashman (Fictitious character)",
+      "British",
+      "Fiction",
+      "Adventure fiction"
+    ]
+  },
+  {
+    "key": "book-089",
+    "title": "The Fire Dragon",
+    "author": "Katharine Kerr",
+    "isbn": "9780006482611",
+    "year": 2000,
+    "subjects": [
+      "Fiction, fantasy, historical",
+      "Deverry (Imaginary place)",
+      "Imaginary wars and battles",
+      "Vendetta"
+    ]
+  },
+  {
+    "key": "book-090",
+    "title": "Traces",
+    "author": "Stephen Baxter",
+    "isbn": "9780002254274",
+    "year": 1998,
+    "subjects": [
+      "English Science fiction",
+      "Science fiction, English",
+      "Alternative histories",
+      "Fiction, science fiction, general"
+    ]
+  },
+  {
+    "key": "book-091",
+    "title": "The Real Witches Handbook",
+    "author": "Kate West",
+    "isbn": "9780007105151",
+    "year": 2001,
+    "subjects": [
+      "Witchcraft",
+      "Handbooks, manuals",
+      "Witches",
+      "Amateurs' manuals"
+    ]
+  },
+  {
+    "key": "book-092",
+    "title": "Grand Conspiracy Alliance Of Light Book 2",
+    "author": "Janny Wurts",
+    "isbn": "9780002240741",
+    "year": 1999,
+    "subjects": [
+      "Fantasy fiction",
+      "Fantasy",
+      "Fiction",
+      "Future life"
+    ]
+  }
+]

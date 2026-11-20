@@ -1,0 +1,23 @@
+<div class="form-foot avatar-picker">
+  <h2>Profile picture</h2>
+  <p>Choose a look for your account.</p>
+  <form method="post" action="{{url_for('avatars.update_avatar')}}" class="avatar-form">
+    {{token()}}
+    <fieldset class="avatar-choices">
+      <legend class="visually-hidden">Choose a profile picture</legend>
+      <label class="avatar-choice">
+        <input type="radio" name="avatar" value="" {{'checked' if not g.user.avatar}}>
+        <span class="avatar-initial">{{g.user.name[:1]|upper}}</span>
+        <span class="visually-hidden">Use your initial</span>
+      </label>
+      {% for avatar in profile_avatars %}
+      <label class="avatar-choice">
+        <input type="radio" name="avatar" value="{{avatar}}" {{'checked' if g.user.avatar==avatar}}>
+        <img src="{{url_for('static',filename='images/avatars/' ~ avatar ~ '.webp',v='2')}}" alt="">
+        <span class="visually-hidden">Avatar {{loop.index}}</span>
+      </label>
+      {% endfor %}
+    </fieldset>
+    <button class="btn btn-primary" type="submit">Save picture</button>
+  </form>
+</div>

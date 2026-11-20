@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+.env
+instance
+__pycache__
+*.pyc
+release
+docs
+tests
+*.pdf
+README.md
