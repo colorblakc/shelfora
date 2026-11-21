@@ -1,6 +1,9 @@
 {% from 'macros.html' import icon,token with context %}
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="csrf-token" content="{{csrf()}}">
 <title>{% block title %}Discover{% endblock %} · Shelfora Library</title>
+<meta name="description" content="{% block meta_description %}Browse the catalogue, reserve books, book a reading-room seat and ask Mira. Shelfora is your library, all in one place.{% endblock %}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Shelfora Library"><meta property="og:title" content="{{ self.title() }} · Shelfora Library"><meta property="og:description" content="{{ self.meta_description() }}">
+<meta property="og:image" content="{{ url_for('static', filename='brand/social-card.png', _external=True) }}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#3c38cc"><link rel="icon" href="{{ url_for('static', filename='brand/book-3d.png') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='brand/brand.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='bolder.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='typeset.css') }}"><link rel="stylesheet" href="{{url_for('static',filename='information.css')}}"><link rel="stylesheet" href="{{url_for('static',filename='avatars.css')}}"><link rel="stylesheet" href="{{url_for('static',filename='assistant.css',v='3')}}"><script defer src="{{ url_for('static', filename='site.js') }}"></script></head>
