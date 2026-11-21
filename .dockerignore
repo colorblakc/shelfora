@@ -5,8 +5,6 @@
 instance
 __pycache__
 *.pyc
-release
 docs
-tests
-*.pdf
+deploy
 README.md

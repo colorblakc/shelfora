@@ -127,73 +127,108 @@ Do not commit `instance/config.py`, `.env`, credentials or database backups. Use
 
 ## Deployment
 
-> **Why a VPS and not a paid platform?** This is a mini-project with a limited scope, so we host it on a VPS-style container host (Altare Docker Apps and Altare managed MySQL, free plan) that pulls a Docker image built from this public GitHub repository. In a real-world project we would weigh the options properly and host it on a paid plan of a managed platform, with managed databases, backups, uptime guarantees and a custom domain.
+> **Why a VPS and not a paid platform?** This is a mini-project with a limited scope, so we host it on a VPS we already own (an Oracle Cloud Always Free ARM server) instead of a managed platform. The few extra pieces we added for that are a `Dockerfile`, a short start script, a GitHub Actions workflow that builds the image, a small Docker Compose file, and a free DuckDNS subdomain for the address. The same steps work on **any VPS** that can run Docker. In a real-world project we would weigh the options properly and host on a paid plan of a managed platform, with managed databases, backups, uptime guarantees and a custom domain.
 
-Shelfora ships as a Docker image. Every push to `main` builds the image on GitHub and publishes it to GitHub's container registry. The host pulls and runs that image and connects it to a separate MySQL database.
+How it fits together:
 
 ```
-git push  ->  GitHub Actions builds the image  ->  ghcr.io/OWNER/REPO:latest  ->  host pulls and runs it  ->  MySQL
+git push  ->  GitHub Actions builds the image  ->  ghcr.io/colorblakc/shelfora:latest
+                                                          |
+your VPS:  Docker Compose runs Shelfora + MySQL  ->  nginx (HTTPS, certbot)  ->  https://yourname.duckdns.org
+                                                          ^
+                                   DuckDNS container keeps the name pointed at the VPS
 ```
 
-### 1. Put the code on a public GitHub repository
+- **The image** is built for both Intel/AMD and ARM servers on every push to `main` (`.github/workflows/docker.yml`) and published as a public package, so the server needs no login to pull it.
+- **MySQL** runs beside the app in its own container on a private Docker network; its data lives in a Docker volume on the VPS disk.
+- **On start** the container waits for the database, runs `flask init-db` (creates or upgrades the tables and adds the starter catalogue, safe to repeat) and `flask ensure-admin` (creates the librarian from `SHELFORA_ADMIN_*` if missing) (`docker-entrypoint.sh`).
 
-Create a public repository and push the project to the `main` branch. The workflow in `.github/workflows/docker.yml` runs by itself and publishes the image as `ghcr.io/<owner>/<repo>:latest` (the name is always lower case).
+### What you need
 
-**The repository is public, so it must never contain secrets.** `.env` and `instance/` are listed in `.gitignore`; keep it that way. All keys are entered later as environment variables on the host. If a key was ever committed, treat it as leaked and create a new one.
+- A VPS with Docker and Docker Compose (Ubuntu or Debian is easiest). Install Docker with `curl -fsSL https://get.docker.com | sudo sh`.
+- Ports **80 and 443** open to the internet, in the cloud provider's firewall and in the server's own firewall. On Oracle Cloud that means an ingress rule in the VCN security list plus `iptables` rules on the instance.
+- A free [DuckDNS](https://www.duckdns.org) account.
 
-### 2. Make the image public
+### 1. Claim a DuckDNS name
 
-On GitHub open your profile, **Packages**, choose the image, then **Package settings**, and set **Change visibility** to **Public** (new packages can start as private). The host can then pull it without a login.
+Sign in at duckdns.org, add a name (for example `shelfora`), and copy your **token** from the top of the page. DuckDNS names are shared by everyone, so pick one that is free.
 
-### 3. Create the MySQL database
+### 2. Get the deployment files onto the server
 
-In the Altare console open **Storage**, **MySQL**, and choose **Create database**. Pick a region and the smallest size the plan allows. Altare provides MySQL 8.4 over an encrypted connection.
+```bash
+git clone https://github.com/colorblakc/shelfora.git
+cd shelfora/deploy
+cp .env.example .env
+cp shelfora.env.example shelfora.env
+```
 
-### 4. Create the app and connect the database
+Edit the two files (`nano .env`, `nano shelfora.env`):
 
-1. In **Apps** choose **New app**, then **Docker image**. Set **Image** to `ghcr.io/<owner>/<repo>:latest` and **Port** to `8000`. No data folder is needed because all data lives in MySQL.
-2. Add these variables (store keys and passwords as **Secrets** if the console offers them):
-
-| Variable | Value |
+| File | What to set |
 |---|---|
-| `SHELFORA_SECRET_KEY` | a long random secret: `python -c "import secrets; print(secrets.token_hex(32))"` |
-| `SHELFORA_ADMIN_NAME`, `SHELFORA_ADMIN_EMAIL`, `SHELFORA_ADMIN_PASSWORD` | the first librarian account, created on start if missing (password of 10 to 128 characters) |
-| `GROQ_API` | optional; key for the Mira assistant |
-| `RZP_KEY_ID`, `RZP_KEY_SECRET` | optional; payment **test** keys |
+| `.env` | `DUCKDNS_SUBDOMAIN`, `DUCKDNS_TOKEN`, and two long random database passwords |
+| `shelfora.env` | `SHELFORA_SECRET_KEY` (a long random secret), the `SHELFORA_ADMIN_*` librarian account, plus optional `GROQ_API` and `RZP_*` keys |
 
-3. Open the database's **Overview** and use **Connect to an app** to attach it to the app. Altare adds `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD` and `MYSQL_DATABASE` and restarts the app. Shelfora reads these variables and turns on the encrypted connection by itself.
+Keep both files private; they are git-ignored. See [Configuration](#configuration) for every setting.
 
-The console labels may differ slightly from the ones above. Altare gives the app an HTTPS address such as `https://your-app.go.altare.global`.
+### 3. Start the app
 
-### 5. What happens on every start
+```bash
+sudo docker compose up -d
+sudo docker compose logs -f shelfora      # Ctrl+C to leave the logs
+```
 
-`docker-entrypoint.sh` runs these steps, then starts the web server:
+The app now answers on `127.0.0.1:8002` and the DuckDNS container points your name at the server.
 
-1. `flask init-db` creates or upgrades the tables and adds the starter catalogue. It keeps existing records, and the script retries for about a minute if the database is still starting.
-2. `flask ensure-admin` creates the librarian account from the `SHELFORA_ADMIN_*` variables if it does not exist.
-3. `gunicorn` serves the app on port 8000.
+### 4. Put HTTPS in front of it (nginx and certbot)
 
-### 6. Check that it works
+If the server has no web server yet, run `sudo apt-get install -y nginx certbot python3-certbot-nginx`. Then create `/etc/nginx/conf.d/shelfora.conf`, replacing the host name:
 
-- Open the address, browse the catalogue, create a member account and reserve a book.
+```nginx
+server {
+    listen 80;
+    server_name yourname.duckdns.org;
+    client_max_body_size 10m;
+    location / {
+        proxy_pass http://127.0.0.1:8002;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+sudo certbot --nginx -d yourname.duckdns.org --redirect
+```
+
+certbot issues the free certificate and renews it automatically. A server that already runs nginx for other sites can simply have this file added; nothing else changes. If you prefer Caddy, a two-line `Caddyfile` does the same: `yourname.duckdns.org { reverse_proxy 127.0.0.1:8002 }`.
+
+### 5. Check that it works
+
+- Open `https://yourname.duckdns.org`, browse the catalogue, create a member account and reserve a book.
 - Sign in as the librarian at `/desk`, approve the request, issue the book and record its return.
-- Book a reading-room seat.
-- If Mira or payments are configured, ask Mira a question and check that the payment service is reachable.
+- Book a reading-room seat, and ask Mira a question if `GROQ_API` is set.
 
-### Updating, and starting again
+### Updating, backups and starting again
 
-- **Update:** push to `main`, wait for the **Actions** tab to show the image built, then redeploy the app on Altare (or turn on its automatic image check, which looks for a new image every 15 minutes). `init-db` upgrades the tables on start.
-- **Start again:** deleting and recreating the app keeps the data, because it is in MySQL. Delete the database as well for a completely fresh library; the starter catalogue and the librarian are recreated on the next start.
-- **Backups:** Altare backs up the database nightly and keeps the last 3 days on the free plan. Take a manual backup before an upgrade.
+- **Update:** push to `main`, wait for the **Actions** tab to show the image built, then on the server run `sudo docker compose pull && sudo docker compose up -d`. `init-db` upgrades the tables on start and the data volume is kept.
+- **Back up** the database before an upgrade: `sudo docker compose exec db sh -c 'mysqldump -uroot -p"$MYSQL_ROOT_PASSWORD" shelfora' > shelfora-backup.sql`.
+- **Start again:** `sudo docker compose down -v` deletes the database volume; the next `up` recreates the tables, the starter catalogue and the librarian.
+- **Reminder emails** are not part of this deployment.
 
 ### Troubleshooting
 
 | Problem | What to check |
 |---|---|
-| Altare cannot pull the image | The package must be public, and the name must be lower case and match exactly. |
-| App keeps restarting | Open the app's logs. "Database not ready" means the MySQL variables are missing, so check that the database is connected to the app. |
-| "Set a unique SECRET_KEY" in the logs | Add `SHELFORA_SECRET_KEY`. |
-| Cannot sign in at `/desk` | Check the `SHELFORA_ADMIN_*` variables; the password must be 10 to 128 characters. |
+| The address does not load | `sudo docker compose ps`, and make sure ports 80 and 443 are open in both firewalls. |
+| The app keeps restarting | `sudo docker compose logs shelfora`. "Database not ready" for more than a minute means the `db` container is unhealthy; check `sudo docker compose logs db`. |
+| "Set a unique SECRET_KEY" in the logs | Add `SHELFORA_SECRET_KEY` to `deploy/shelfora.env`. |
+| Cannot sign in at `/desk` | Check the `SHELFORA_ADMIN_*` values; the password must be 10 to 128 characters. They only apply the first time an account is created. |
+| certbot fails | The DuckDNS name must already point at the server. Check with `getent hosts yourname.duckdns.org` and the DuckDNS container logs. |
+| The DuckDNS container exits | `DUCKDNS_TOKEN` or `DUCKDNS_SUBDOMAIN` is empty in `deploy/.env`. |
 | Mira or payments unavailable | Check `GROQ_API` and the `RZP_*` keys. |
 
 ---

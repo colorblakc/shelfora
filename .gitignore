@@ -4,3 +4,5 @@ __pycache__/
 instance/
 
 .env
+deploy/.env
+deploy/*.env

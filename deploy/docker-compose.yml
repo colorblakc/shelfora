@@ -1,0 +1,47 @@
+# Shelfora on any VPS with Docker. It listens on 127.0.0.1:8002 only; put nginx or Caddy in front of it.
+# MySQL runs beside it on a private Docker network. The DuckDNS container keeps your free
+# yourname.duckdns.org address pointed at this server.
+services:
+  shelfora:
+    image: ghcr.io/colorblakc/shelfora:latest
+    restart: unless-stopped
+    env_file: shelfora.env
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: "3306"
+      MYSQL_USER: shelfora
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: shelfora
+      SHELFORA_MYSQL_SSL: "false"   # the database is on the private Docker network
+    ports:
+      - "127.0.0.1:8002:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: shelfora
+      MYSQL_USER: shelfora
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    restart: unless-stopped
+    environment:
+      SUBDOMAINS: ${DUCKDNS_SUBDOMAIN}
+      TOKEN: ${DUCKDNS_TOKEN}
+
+volumes:
+  mysql_data:
